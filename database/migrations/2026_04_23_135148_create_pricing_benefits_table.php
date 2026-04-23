@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pricing_id')->constrained()->cascadeOnDelete();
             $table->string('benefit');
+            $table->unsignedInteger('sort_order')->default(0);
             $table->timestamps();
-        });;
+        });
     }
 
     /**

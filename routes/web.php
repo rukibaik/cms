@@ -1,47 +1,71 @@
 <?php
 
+use App\Livewire\CMS\About\Edit as AboutEdit;
+use App\Livewire\CMS\Hero\Edit as HeroEdit;
+use App\Livewire\CMS\Pricing\Manage as PricingManage;
+use App\Livewire\CMS\Service\Index as ServiceIndex;
+use App\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
+use App\Models\Service;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Livewire\CMS\Service\Form;
 
 /*
 |--------------------------------------------------------------------------
-| PUBLIC ROUTES
+| FRONTEND
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', fn() => view('pages.public.home'))->name('home');
+
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
 
 Route::get('/services/{slug}', function ($slug) {
-    return view('pages.public.service-detail', compact('slug'));
-})->name('service.detail');
+    $service = Service::with('items.images')
+        ->where('slug', $slug)
+        ->firstOrFail();
+
+    return view('pages.service-detail', compact('service'));
+})->name('services.show');
 
 
 /*
 |--------------------------------------------------------------------------
-| AUTHENTICATED USER
+| CMS (ADMIN)
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/dashboard', fn() => redirect('/cms/dashboard'));
+    Route::livewire('/dashboard', Dashboard::class)
+        ->name('dashboard');
+
+    Route::prefix('cms')->name('cms.')->group(function () {
+
+        Route::livewire('/hero', HeroEdit::class)
+            ->name('hero');
+
+        Route::livewire('/about', AboutEdit::class)
+            ->name('about');
+
+        Route::livewire('/services', ServiceIndex::class)
+            ->name('services');
+
+        Route::get('/services/create', Form::class)
+            ->name('services.create');
+
+        Route::get('/services/{service}/edit', Form::class)
+            ->name('services.edit');
+
+        Route::livewire('/pricing', PricingManage::class)
+            ->name('pricing');
+    });
 });
 
 
 /*
 |--------------------------------------------------------------------------
-| CMS (ADMIN ONLY)
+| SETTINGS (starter kit)
 |--------------------------------------------------------------------------
 */
-
-Route::middleware(['auth', 'admin'])->prefix('cms')->group(function () {
-
-    Route::view('/dashboard', 'pages.cms.dashboard')->name('cms.dashboard');
-
-    Route::view('/hero', 'pages.cms.hero')->name('cms.hero');
-    Route::view('/about', 'pages.cms.about')->name('cms.about');
-    Route::view('/service', 'pages.cms.service')->name('cms.service');
-    Route::view('/pricing', 'pages.cms.pricing')->name('cms.pricing');
-});
-
-
 require __DIR__ . '/settings.php';

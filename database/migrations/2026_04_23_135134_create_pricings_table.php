@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('pricings', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // class
-            $table->decimal('price', 10, 2);
+            $table->string('name');
+            $table->decimal('price', 10, 2)->default(0);
             $table->string('button_text')->nullable();
             $table->string('button_link')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('is_featured')->default(false);
+            $table->unsignedInteger('sort_order')->default(0);
             $table->timestamps();
         });
     }

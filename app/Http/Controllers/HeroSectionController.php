@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutSection;
 use App\Models\HeroSection;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,10 @@ class HeroSectionController extends Controller
 {
     public function index()
     {
-        return HeroSection::first();
+        return view('pages.home', [
+            'hero' => HeroSection::first(),
+            'about' => AboutSection::first(),
+        ]);
     }
 
     public function update(Request $request)
