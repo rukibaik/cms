@@ -26,23 +26,18 @@
             <div class="mt-12 space-y-10">
                 @forelse ($service->items as $item)
                     <article class="scroll-mt-32">
+                        @if ($item->subtitle)
+                            <p class="text-xs uppercase tracking-[0.2em] text-brand-accent mb-2">{{ $item->subtitle }}</p>
+                        @endif
                         <h2 class="text-2xl font-semibold text-white mb-3">{{ $item->title }}</h2>
                         @if ($item->description)
                             <p class="text-white/65 leading-7 max-w-3xl">{{ $item->description }}</p>
                         @endif
 
-                        @if ($item->images->isNotEmpty())
-                            <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                @foreach ($item->images as $image)
-                                    <div class="group relative overflow-hidden rounded-sm border border-white/10">
-                                        <img src="{{ $image->image_url }}" alt="{{ $item->title }}"
-                                            class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                                            loading="lazy">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                                        </div>
-                                    </div>
-                                @endforeach
+                        @if ($item->image)
+                            <div class="mt-6 overflow-hidden rounded-sm border border-white/10 max-w-3xl">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                    class="w-full max-h-[32rem] object-cover" loading="lazy">
                             </div>
                         @endif
                     </article>

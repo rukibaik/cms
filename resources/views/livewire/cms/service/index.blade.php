@@ -1,4 +1,8 @@
 <div class="max-w-5xl mx-auto p-6">
+    <div class="mb-8">
+        <livewire:cms.service.service-section-settings />
+    </div>
+
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-white">Manage Services</h2>
         <a href="{{ route('cms.services.create') }}"
@@ -19,12 +23,13 @@
                     <div>
                         <h3 class="text-white font-medium">{{ $service->title }}</h3>
                         <p class="text-sm text-white/40">{{ $service->slug }}</p>
+                        <p class="text-xs text-white/30 mt-1">{{ $service->items_count }} items</p>
                     </div>
                     <div class="flex gap-3">
                         <a href="{{ route('cms.services.edit', $service->id) }}"
                             class="text-brand-accent hover:text-brand-accent-light text-sm font-medium">Edit</a>
                         <button wire:click="delete({{ $service->id }})"
-                            wire:confirm="Are you sure you want to delete this service? This will also delete all items & images."
+                            wire:confirm="Are you sure you want to delete this service? This will also delete all service items."
                             class="text-red-400 hover:text-red-300 text-sm font-medium">Delete</button>
                     </div>
                 </div>

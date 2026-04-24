@@ -28,7 +28,7 @@
                     {{ __('About Us') }}
                 </flux:sidebar.item>
                 <flux:sidebar.item icon="home" :href="route('cms.services')"
-                    :current="request()->routeIs('cms.services')" wire:navigate>
+                    :current="request()->routeIs('cms.services*')" wire:navigate>
                     {{ __('Services') }}
                 </flux:sidebar.item>
 

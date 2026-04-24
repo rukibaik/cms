@@ -14,10 +14,10 @@ class HomeController
     {
         $hero = HeroSection::query()->first();
         $about = AboutSection::query()->first();
-        $serviceSection = ServiceSectionSetting::query()->first();
+        $serviceSection = ServiceSectionSetting::getOrCreate();
         $services = Service::query()
-            ->with('items.images')
-            ->latest()
+            ->with('items')
+            ->orderBy('sort_order')
             ->get();
         $pricings = Pricing::query()
             ->with('benefits')

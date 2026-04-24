@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('service_id')->constrained()->cascadeOnDelete();
             $table->string('title');
+            $table->string('subtitle')->nullable(); // NEW
             $table->text('description')->nullable();
+            $table->string('image')->nullable(); // NEW
             $table->unsignedInteger('sort_order')->default(0);
             $table->timestamps();
         });

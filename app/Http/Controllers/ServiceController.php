@@ -9,7 +9,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        return Service::with('items.images')->get();
+        return Service::with('items')->orderBy('sort_order')->get();
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class ServiceController extends Controller
     public function show($slug)
     {
         return Service::where('slug', $slug)
-            ->with('items.images')
+            ->with('items')
             ->firstOrFail();
     }
 

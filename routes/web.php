@@ -21,7 +21,7 @@ Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
 Route::get('/services/{slug}', function ($slug) {
-    $service = Service::with('items.images')
+    $service = Service::with('items')
         ->where('slug', $slug)
         ->firstOrFail();
 
@@ -56,6 +56,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::get('/services/{service}/edit', Form::class)
             ->name('services.edit');
+
 
         Route::livewire('/pricing', PricingManage::class)
             ->name('pricing');

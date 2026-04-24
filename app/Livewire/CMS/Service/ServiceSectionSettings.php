@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Cms;
+namespace App\Livewire\Cms\Service;
 
 use App\Models\ServiceSectionSetting;
 use Livewire\Component;
