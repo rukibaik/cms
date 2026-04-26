@@ -17,6 +17,7 @@
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
+
                 <div>
                     <label class="block text-sm font-medium mb-1">Price</label>
                     <input wire:model.live="pricings.{{ $index }}.price" type="number" step="0.01"
@@ -25,20 +26,35 @@
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
+
                 <div>
                     <label class="block text-sm font-medium mb-1">Button Text</label>
                     <input wire:model.live="pricings.{{ $index }}.button_text" type="text"
-                        class="w-full border rounded p-2">
+                        class="w-full border rounded p-2 @error('pricings.' . $index . '.button_text') border-red-500 @enderror">
+                    @error('pricings.' . $index . '.button_text')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
+
                 <div>
                     <label class="block text-sm font-medium mb-1">Button Link</label>
-                    <input wire:model.live="pricings.{{ $index }}.button_link" type="url"
-                        class="w-full border rounded p-2">
+                    <input wire:model.live="pricings.{{ $index }}.button_link" type="text"
+                        placeholder="# or /contact or https://..."
+                        class="w-full border rounded p-2 @error('pricings.' . $index . '.button_link') border-red-500 @enderror">
+                    @error('pricings.' . $index . '.button_link')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
+
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium mb-1">Description</label>
-                    <textarea wire:model.live="pricings.{{ $index }}.description" rows="2" class="w-full border rounded p-2"></textarea>
+                    <textarea wire:model.live="pricings.{{ $index }}.description" rows="2"
+                        class="w-full border rounded p-2 @error('pricings.' . $index . '.description') border-red-500 @enderror"></textarea>
+                    @error('pricings.' . $index . '.description')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
+
                 <div class="md:col-span-2 flex items-center gap-2">
                     <input wire:model.live="pricings.{{ $index }}.is_featured" type="checkbox"
                         class="rounded text-brand-accent">
@@ -49,15 +65,18 @@
             <div class="mt-6">
                 <label class="block text-sm font-medium mb-2">Benefits</label>
                 @foreach ($pricing['benefits'] as $bIndex => $benefit)
-                    <div class="flex gap-2 mb-2" wire:key="benefit-{{ $index }}-{{ $bIndex }}">
-                        <input wire:model.live="pricings.{{ $index }}.benefits.{{ $bIndex }}"
-                            type="text" class="flex-1 border rounded p-2">
+                    <div class="mb-2 flex gap-2" wire:key="benefit-{{ $index }}-{{ $bIndex }}">
+                        <input wire:model.live="pricings.{{ $index }}.benefits.{{ $bIndex }}" type="text"
+                            class="flex-1 border rounded p-2 @error('pricings.' . $index . '.benefits.' . $bIndex) border-red-500 @enderror">
                         <button wire:click="removeBenefit({{ $index }}, {{ $bIndex }})"
-                            class="text-red-500 px-2 hover:text-red-700">×</button>
+                            class="px-2 text-red-500 hover:text-red-700">&times;</button>
                     </div>
+                    @error('pricings.' . $index . '.benefits.' . $bIndex)
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 @endforeach
                 <button wire:click="addBenefit({{ $index }})"
-                    class="text-sm text-blue-500 hover:underline mt-1">+ Add Benefit</button>
+                    class="mt-1 text-sm text-blue-500 hover:underline">+ Add Benefit</button>
             </div>
         </div>
     @endforeach

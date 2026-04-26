@@ -77,24 +77,27 @@ class Manage extends Component
             'pricings.*.name' => 'required|string|max:255',
             'pricings.*.price' => 'required|numeric|min:0',
             'pricings.*.button_text' => 'nullable|string|max:255',
-            'pricings.*.button_link' => 'nullable|url|max:255',
+            'pricings.*.button_link' => 'nullable|string|max:255',
             'pricings.*.description' => 'nullable|string',
             'pricings.*.benefits.*' => 'nullable|string|max:255',
         ]);
 
         DB::transaction(function () {
+            $keptPricingIds = [];
+
             foreach ($this->pricings as $index => $data) {
                 $pricing = $data['id'] ? Pricing::find($data['id']) : new Pricing();
                 $pricing->fill([
-                    'name' => $data['name'],
+                    'name' => trim($data['name']),
                     'price' => $data['price'],
-                    'button_text' => $data['button_text'],
-                    'button_link' => $data['button_link'],
-                    'description' => $data['description'],
-                    'is_featured' => $data['is_featured'],
+                    'button_text' => $this->nullableString($data['button_text'] ?? null),
+                    'button_link' => $this->normalizeLink($data['button_link'] ?? null),
+                    'description' => $this->nullableString($data['description'] ?? null),
+                    'is_featured' => (bool) ($data['is_featured'] ?? false),
                     'sort_order' => $index,
                 ]);
                 $pricing->save();
+                $keptPricingIds[] = $pricing->id;
 
                 $benefitTexts = array_filter($data['benefits'], fn($b) => trim($b) !== '');
                 $pricing->benefits()->delete();
@@ -102,6 +105,11 @@ class Manage extends Component
                     $pricing->benefits()->create(['benefit' => trim($text), 'sort_order' => $order]);
                 }
             }
+
+            Pricing::query()
+                ->when($keptPricingIds !== [], fn($query) => $query->whereNotIn('id', $keptPricingIds))
+                ->when($keptPricingIds === [], fn($query) => $query)
+                ->delete();
         });
 
         session()->flash('success', 'Pricing plans saved successfully!');
@@ -111,5 +119,19 @@ class Manage extends Component
     public function render()
     {
         return view('livewire.cms.pricing.manage');
+    }
+
+    protected function nullableString(mixed $value): ?string
+    {
+        $value = trim((string) $value);
+
+        return $value === '' ? null : $value;
+    }
+
+    protected function normalizeLink(mixed $value): ?string
+    {
+        $value = trim((string) $value);
+
+        return $value === '' ? null : $value;
     }
 }

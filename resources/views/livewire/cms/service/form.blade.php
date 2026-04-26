@@ -62,7 +62,8 @@
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <h4 class="text-base font-medium text-white">Item {{ $index + 1 }}</h4>
-                            <p class="text-sm text-white/45">Each item supports one image, subtitle, and description.</p>
+                            <p class="text-sm text-white/45">Each item supports one image, subtitle, and description.
+                            </p>
                         </div>
                         <button wire:click="removeItem({{ $index }})" type="button"
                             class="text-sm font-medium text-red-400 hover:text-red-300 transition">
@@ -119,8 +120,8 @@
                         </div>
                     @elseif (!empty($item['image']))
                         <div class="relative overflow-hidden rounded-lg border border-white/10">
-                            <img src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['title'] ?: 'Item image' }}"
-                                class="h-48 w-full object-cover">
+                            <img src="{{ asset('storage/' . $item['image']) }}"
+                                alt="{{ $item['title'] ?: 'Item image' }}" class="h-48 w-full object-cover">
                             <button wire:click="removeItemImage({{ $index }})" type="button"
                                 class="absolute right-3 top-3 rounded bg-black/70 px-3 py-1 text-xs font-medium text-white">
                                 Remove image
