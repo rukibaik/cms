@@ -37,7 +37,8 @@
                         @if ($item->image)
                             <div class="mt-6 overflow-hidden rounded-sm border border-white/10 max-w-3xl">
                                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
-                                    class="w-full max-h-[32rem] object-cover" loading="lazy">
+                                    class="w-full max-h-[32rem] object-cover" width="1200" height="800" loading="lazy"
+                                    decoding="async">
                             </div>
                         @endif
                     </article>

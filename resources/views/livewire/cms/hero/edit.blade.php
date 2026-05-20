@@ -39,8 +39,11 @@
 
         <div>
             <label class="block text-sm font-medium mb-1">Background Image</label>
-            <input wire:model.live="backgroundImage" type="file" accept="image/*"
+            <input wire:model.live="backgroundImage" type="file" accept="image/jpeg,image/png,image/webp"
                 class="w-full border border-gray-300 dark:border-gray-600 rounded p-2 @error('backgroundImage') border-red-500 @enderror">
+            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                JPG, PNG, or WebP only. Max 2 MB and 3000 x 3000 px. Saved as optimized WebP.
+            </p>
             @error('backgroundImage')
                 <span class="text-red-500 text-xs">{{ $message }}</span>
             @enderror

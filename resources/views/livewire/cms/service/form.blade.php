@@ -102,8 +102,11 @@
 
                     <div>
                         <label class="block text-sm font-medium text-white/70 mb-1">Image</label>
-                        <input wire:model.live="itemImages.{{ $index }}" type="file" accept="image/*"
+                        <input wire:model.live="itemImages.{{ $index }}" type="file" accept="image/jpeg,image/png,image/webp"
                             class="w-full bg-brand-dark border border-white/10 rounded-md p-3 text-white focus:ring-2 focus:ring-brand-accent focus:border-transparent @error('itemImages.' . $index) border-red-500 @enderror">
+                        <p class="mt-1 text-xs text-white/45">
+                            JPG, PNG, or WebP only. Max 2 MB and 3000 x 3000 px. Saved as optimized WebP.
+                        </p>
                         @error('itemImages.' . $index)
                             <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                         @enderror

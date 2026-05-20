@@ -3,6 +3,7 @@
 namespace App\Livewire\Cms\Service;
 
 use App\Models\Service;
+use App\Support\OptimizedImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -14,16 +15,25 @@ class Form extends Component
 {
     use WithFileUploads;
 
+    private const IMAGE_RULES = ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048', 'dimensions:max_width=3000,max_height=3000'];
+
     public ?Service $service = null;
+
     public ?string $title = null;
+
     public ?string $slug = null;
+
     public ?string $subtitle = null;
+
     public ?string $description = null;
+
     public array $items = [];
+
     public array $itemImages = [];
+
     public bool $saving = false;
 
-    public function mount(Service $service = null): void
+    public function mount(?Service $service = null): void
     {
         $this->service = $service;
         if ($service) {
@@ -47,7 +57,7 @@ class Form extends Component
 
     public function updatedTitle(): void
     {
-        if (!$this->service && $this->title) {
+        if (! $this->service && $this->title) {
             $this->slug = Str::slug($this->title);
         }
     }
@@ -69,7 +79,7 @@ class Form extends Component
     {
         unset($this->itemImages[$index]);
 
-        if (!isset($this->items[$index])) {
+        if (! isset($this->items[$index])) {
             $this->itemImages = array_values($this->itemImages);
 
             return;
@@ -98,7 +108,7 @@ class Form extends Component
             'items.*.title' => ['required', 'string', 'max:255'],
             'items.*.subtitle' => ['nullable', 'string', 'max:255'],
             'items.*.description' => ['nullable', 'string'],
-            'itemImages.*' => ['nullable', 'image', 'max:5120'],
+            'itemImages.*' => self::IMAGE_RULES,
         ]);
 
         DB::transaction(function (): void {
@@ -122,17 +132,17 @@ class Form extends Component
                 $item = $this->service->items()->find($itemData['id'] ?? null) ?? $this->service->items()->make();
                 $imagePath = $itemData['existing_image'] ?? null;
 
-                if (!empty($itemData['remove_image']) && $itemData['existing_image']) {
+                if (! empty($itemData['remove_image']) && $itemData['existing_image']) {
                     Storage::disk('public')->delete($itemData['existing_image']);
                     $imagePath = null;
                 }
 
-                if (!empty($this->itemImages[$index])) {
+                if (! empty($this->itemImages[$index])) {
+                    $imagePath = OptimizedImage::storeServiceItem($this->itemImages[$index]);
+
                     if ($itemData['existing_image']) {
                         Storage::disk('public')->delete($itemData['existing_image']);
                     }
-
-                    $imagePath = $this->itemImages[$index]->store('services/items', 'public');
                 }
 
                 $item->fill([

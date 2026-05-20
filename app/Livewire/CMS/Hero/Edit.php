@@ -3,20 +3,29 @@
 namespace App\Livewire\Cms\Hero;
 
 use App\Models\HeroSection;
+use App\Support\OptimizedImage;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
 
 class Edit extends Component
 {
     use WithFileUploads;
 
+    private const IMAGE_RULES = ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048', 'dimensions:max_width=3000,max_height=3000'];
+
     public ?string $title = null;
+
     public ?string $subtitle = null;
+
     public ?string $buttonText = null;
+
     public ?string $buttonLink = null;
+
     public $backgroundImage = null;
+
     public ?string $preview = null;
+
     public bool $saving = false;
 
     public function mount(): void
@@ -38,17 +47,18 @@ class Edit extends Component
             'subtitle' => 'nullable|string|max:500',
             'buttonText' => 'nullable|string|max:100',
             'buttonLink' => 'nullable|url|max:255',
-            'backgroundImage' => 'nullable|image|max:5120', // 5MB
+            'backgroundImage' => self::IMAGE_RULES,
         ]);
 
         $hero = HeroSection::getOrCreate();
 
         // Handle new image & cleanup old one
         if ($this->backgroundImage) {
+            $validated['background_image'] = OptimizedImage::storeHeroBackground($this->backgroundImage);
+
             if ($this->preview) {
                 Storage::disk('public')->delete($this->preview);
             }
-            $validated['background_image'] = $this->backgroundImage->store('hero', 'public');
         }
 
         $hero->update([

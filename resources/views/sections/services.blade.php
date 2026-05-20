@@ -16,7 +16,8 @@
                 class="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:-translate-y-1 hover:border-white/20">
                 @if ($service->items->first()?->image)
                     <img src="{{ asset('storage/' . $service->items->first()->image) }}" alt="{{ $service->title }}"
-                        class="h-48 w-full rounded-xl object-cover">
+                        class="h-48 w-full rounded-xl object-cover" width="640" height="384" loading="lazy"
+                        decoding="async">
                 @endif
 
                 <h3 class="mt-4 text-xl font-semibold text-white">{{ $service->title }}</h3>

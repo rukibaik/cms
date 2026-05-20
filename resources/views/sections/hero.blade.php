@@ -3,8 +3,9 @@
 <section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
     {{-- Background Image with Fallback --}}
     @if ($hero?->background_image)
-        <img src="{{ asset('storage/' . $hero->background_image) }}" alt="{{ $hero->title }}"
-            class="absolute inset-0 w-full h-full object-cover z-0" loading="eager" decoding="async">
+        <img src="{{ asset('storage/' . $hero->background_image) }}" alt=""
+            class="absolute inset-0 w-full h-full object-cover z-0" width="1920" height="1080" loading="eager"
+            fetchpriority="high" decoding="async">
     @else
         <div class="absolute inset-0 bg-brand-dark z-0"></div>
     @endif
