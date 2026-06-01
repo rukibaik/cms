@@ -3,7 +3,7 @@
 namespace App\Livewire\Cms\Service;
 
 use App\Models\Service;
-use Illuminate\Support\Facades\Storage;
+use App\Support\OptimizedImage;
 use Livewire\Component;
 
 class Index extends Component
@@ -14,7 +14,7 @@ class Index extends Component
 
         foreach ($service->items as $item) {
             if ($item->image) {
-                Storage::disk('public')->delete($item->image);
+                OptimizedImage::delete($item->image);
             }
         }
 

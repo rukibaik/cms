@@ -5,7 +5,6 @@ namespace App\Livewire\Cms\Service;
 use App\Models\Service;
 use App\Support\OptimizedImage;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -133,7 +132,7 @@ class Form extends Component
                 $imagePath = $itemData['existing_image'] ?? null;
 
                 if (! empty($itemData['remove_image']) && $itemData['existing_image']) {
-                    Storage::disk('public')->delete($itemData['existing_image']);
+                    OptimizedImage::delete($itemData['existing_image']);
                     $imagePath = null;
                 }
 
@@ -141,7 +140,7 @@ class Form extends Component
                     $imagePath = OptimizedImage::storeServiceItem($this->itemImages[$index]);
 
                     if ($itemData['existing_image']) {
-                        Storage::disk('public')->delete($itemData['existing_image']);
+                        OptimizedImage::delete($itemData['existing_image']);
                     }
                 }
 
@@ -165,7 +164,7 @@ class Form extends Component
 
             foreach ($itemsToDelete as $item) {
                 if ($item->image) {
-                    Storage::disk('public')->delete($item->image);
+                    OptimizedImage::delete($item->image);
                 }
 
                 $item->delete();

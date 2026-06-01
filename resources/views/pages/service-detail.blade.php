@@ -1,19 +1,24 @@
 @extends('layouts.guest')
 
 @section('content')
-    <section class="bg-brand-darker min-h-screen pt-28 pb-20 lg:pt-36 lg:pb-24">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <section class="min-h-screen bg-brand-darker pb-20 pt-28 lg:pb-24 lg:pt-36">
+        <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
             <a href="{{ route('home') }}#services"
-                class="inline-flex items-center gap-2 text-sm text-brand-accent hover:text-brand-accent-light transition mb-8">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                class="mb-8 inline-flex min-h-11 items-center gap-2 rounded-full text-sm font-semibold text-brand-accent transition-colors duration-150 hover:text-brand-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
                 Back to Services
             </a>
 
             <div class="mt-6 border-b border-white/10 pb-8">
-                <p class="text-xs uppercase tracking-[0.2em] text-brand-accent mb-2">Service Detail</p>
-                <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+                <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <p class="text-xs uppercase tracking-[0.2em] text-brand-accent">Service Detail</p>
+                    <a href="https://www.instagram.com/prestigeworkpage/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        Visit Instagram
+                    </a>
+                </div>
+                <h1 class="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                     {{ $service->title }}</h1>
                 @if ($service->subtitle)
                     <p class="mt-3 text-lg text-white/65">{{ $service->subtitle }}</p>
@@ -36,7 +41,9 @@
 
                         @if ($item->image)
                             <div class="mt-6 overflow-hidden rounded-sm border border-white/10 max-w-3xl">
+                                @php($itemImageSrcset = \App\Support\OptimizedImage::srcset($item->image))
                                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                    @if ($itemImageSrcset) srcset="{{ $itemImageSrcset }}" sizes="(min-width: 1024px) 768px, calc(100vw - 3rem)" @endif
                                     class="w-full max-h-[32rem] object-cover" width="1200" height="800" loading="lazy"
                                     decoding="async">
                             </div>

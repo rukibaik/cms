@@ -81,6 +81,30 @@
     }
 }
 
+@layer utilities {
+    .content-visibility-auto {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 720px;
+    }
+
+    @media (min-width: 1024px) {
+        .content-visibility-auto {
+            contain-intrinsic-size: auto 820px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        ::before,
+        ::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid gap-2;
 }

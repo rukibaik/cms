@@ -6,7 +6,6 @@ use App\Models\AboutSection;
 use App\Models\HeroSection;
 use App\Support\OptimizedImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class HeroSectionController extends Controller
 {
@@ -34,7 +33,7 @@ class HeroSectionController extends Controller
             $validated['background_image'] = OptimizedImage::storeHeroBackground($request->file('background_image'));
 
             if ($hero->background_image) {
-                Storage::disk('public')->delete($hero->background_image);
+                OptimizedImage::delete($hero->background_image);
             }
         }
 

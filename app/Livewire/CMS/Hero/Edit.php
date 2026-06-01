@@ -4,7 +4,6 @@ namespace App\Livewire\Cms\Hero;
 
 use App\Models\HeroSection;
 use App\Support\OptimizedImage;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -57,7 +56,7 @@ class Edit extends Component
             $validated['background_image'] = OptimizedImage::storeHeroBackground($this->backgroundImage);
 
             if ($this->preview) {
-                Storage::disk('public')->delete($this->preview);
+                OptimizedImage::delete($this->preview);
             }
         }
 
@@ -76,7 +75,7 @@ class Edit extends Component
     public function removeImage(): void
     {
         if ($this->preview) {
-            Storage::disk('public')->delete($this->preview);
+            OptimizedImage::delete($this->preview);
         }
         $this->backgroundImage = null;
         $this->preview = null;

@@ -1,0 +1,195 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'Open Sauce Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: optional;
+    src: url('/fonts/OpenSauceSans-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sauce Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-display: optional;
+    src: url('/fonts/OpenSauceSans-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sauce Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: optional;
+    src: url('/fonts/OpenSauceSans-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sauce Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: optional;
+    src: url('/fonts/OpenSauceSans-Bold.woff') format('woff');
+}
+
+@source '../views/layouts/guest.blade.php';
+@source '../views/pages/*.blade.php';
+@source '../views/partials/navbar.blade.php';
+@source '../views/partials/footer.blade.php';
+@source '../views/sections/*.blade.php';
+
+@theme {
+    --font-sans: 'Open Sauce Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Open Sauce Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --color-brand-dark: #0a0a0a;
+    --color-brand-darker: #050505;
+    --color-brand-accent: #0D45FF;
+    --color-brand-accent-light: #e8c97a;
+    --color-brand-accent-dark: #b8923e;
+
+    --color-brand-gray-100: #f5f5f5;
+    --color-brand-gray-200: #e5e5e5;
+    --color-brand-gray-300: #d4d4d4;
+    --color-brand-gray-400: #a3a3a3;
+    --color-brand-gray-500: #737373;
+    --color-brand-gray-600: #525252;
+    --color-brand-gray-700: #404040;
+    --color-brand-gray-800: #262626;
+    --color-brand-gray-900: #171717;
+}
+
+@layer base {
+    html {
+        scroll-padding-top: 5rem;
+    }
+
+    body {
+        text-rendering: optimizeLegibility;
+    }
+
+    a,
+    button,
+    input,
+    select,
+    textarea {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold leading-tight transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker disabled:pointer-events-none disabled:opacity-50 sm:w-auto;
+    }
+
+    .btn-primary {
+        @apply bg-brand-accent text-white hover:bg-brand-accent-light hover:text-brand-dark;
+    }
+
+    .btn-secondary {
+        @apply border border-white/15 bg-white/5 text-white/85 hover:border-brand-accent/50 hover:text-white;
+    }
+
+    .btn-outline {
+        @apply border border-brand-accent/40 bg-white/5 text-brand-accent hover:bg-brand-accent hover:text-white;
+    }
+
+    .btn-dark {
+        @apply bg-brand-darker text-white hover:bg-black;
+    }
+
+    .btn-light {
+        @apply bg-white text-brand-dark hover:bg-white/90;
+    }
+
+    .btn-card {
+        @apply flex min-h-12 w-full items-center justify-center border-t border-white/10 bg-brand-dark/50 px-6 py-4 text-sm font-semibold text-brand-accent transition-colors duration-150 group-hover:bg-brand-accent group-hover:text-white group-focus-visible:bg-brand-accent group-focus-visible:text-white;
+    }
+
+    .nav-link {
+        @apply inline-flex min-h-11 items-center rounded-full px-4 text-sm font-medium text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker;
+    }
+
+    .mobile-nav-link {
+        @apply flex min-h-12 items-center rounded-lg px-4 text-sm font-semibold text-white/75 transition-colors duration-150 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent;
+    }
+
+    .mobile-nav-link-active {
+        @apply bg-white/5 text-brand-accent;
+    }
+
+    .social-link {
+        @apply flex min-h-11 items-center gap-4 text-white/60 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker;
+    }
+
+    .social-icon {
+        @apply flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition-colors duration-150;
+    }
+
+    .social-link:hover .social-icon,
+    .social-link:focus-visible .social-icon {
+        border-color: rgb(13 69 255 / 0.85);
+        background-color: rgb(13 69 255 / 0.1);
+    }
+
+    .form-control {
+        @apply w-full min-h-12 rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors duration-150 placeholder:text-white/25 focus:border-brand-accent/60 focus:ring-2 focus:ring-brand-accent/15;
+    }
+}
+
+@layer utilities {
+    .mobile-menu-button span {
+        transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .mobile-menu-panel {
+        display: none;
+    }
+
+    #mobile-menu-toggle:checked ~ .mobile-menu-panel {
+        display: block;
+    }
+
+    #mobile-menu-toggle:focus-visible ~ .nav-shell .mobile-menu-button {
+        outline: 2px solid #0D45FF;
+        outline-offset: 2px;
+    }
+
+    #mobile-menu-toggle:checked ~ .nav-shell .mobile-menu-button span:first-child {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #mobile-menu-toggle:checked ~ .nav-shell .mobile-menu-button span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #mobile-menu-toggle:checked ~ .nav-shell .mobile-menu-button span:last-child {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .content-visibility-auto {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 640px;
+    }
+
+    @media (min-width: 1024px) {
+        .content-visibility-auto {
+            contain-intrinsic-size: auto 820px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html:focus-within {
+            scroll-behavior: auto;
+        }
+
+        *,
+        ::before,
+        ::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}

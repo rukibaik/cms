@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\CMS\About\Edit as AboutEdit;
+use App\Livewire\CMS\Contact\Edit as ContactEdit;
 use App\Livewire\CMS\Hero\Edit as HeroEdit;
 use App\Livewire\CMS\Pricing\Manage as PricingManage;
 use App\Livewire\CMS\Service\Index as ServiceIndex;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Service;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Livewire\CMS\Service\Form;
+use App\Models\ContactSection;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +18,15 @@ use App\Livewire\CMS\Service\Form;
 |--------------------------------------------------------------------------
 */
 
-
+// INDEX LANDING PAGE
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
+
 Route::get('/services/{slug}', function ($slug) {
-    $service = Service::with('items')
+    $service = Service::query()
+        ->select(['id', 'title', 'slug', 'subtitle', 'description'])
+        ->with(['items:id,service_id,title,subtitle,description,image,sort_order'])
         ->where('slug', $slug)
         ->firstOrFail();
 
@@ -60,6 +65,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::livewire('/pricing', PricingManage::class)
             ->name('pricing');
+
+        Route::livewire('/contact', ContactEdit::class)
+            ->name('contact');
     });
 });
 
