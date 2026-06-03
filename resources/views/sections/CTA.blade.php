@@ -1,16 +1,15 @@
-<section class="content-visibility-auto relative overflow-hidden bg-brand-accent py-24 lg:py-32">
-    <div class="absolute inset-0 hidden bg-gradient-to-br from-brand-accent/30 via-brand-accent/10 to-transparent lg:block"></div>
-    <div class="absolute left-0 top-0 hidden h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl pointer-events-none lg:block"></div>
-    <div class="absolute bottom-0 right-0 hidden h-96 w-96 translate-x-1/3 translate-y-1/3 rounded-full bg-white/10 blur-3xl pointer-events-none lg:block"></div>
+<section class="content-visibility-auto relative overflow-hidden bg-brand-accent py-20 lg:py-28">
+    <div class="absolute inset-x-0 top-0 h-px bg-white/25 pointer-events-none"></div>
+    <div class="absolute inset-x-0 bottom-0 h-px bg-black/20 pointer-events-none"></div>
 
     <div class="relative mx-auto max-w-4xl px-5 text-center sm:px-6 lg:px-8">
-        <h2 class="mb-6 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl xl:text-6xl">
+        <h2 class="mb-6 text-3xl font-bold leading-tight tracking-tight text-white text-balance sm:text-4xl lg:text-5xl xl:text-6xl">
             Strategi Kreatif untuk
-            <br>
+            <br class="hidden sm:block">
             Brand yang Ingin
             <span class="font-normal italic text-white/90">Naik Level</span>
         </h2>
-        <p class="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/90 lg:mb-12 lg:text-lg">
+        <p class="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/90 text-pretty lg:mb-12 lg:text-lg">
             Konsultasikan kebutuhan media kreatif Anda bersama tim ahli kami - gratis, tanpa komitmen.
         </p>
         <a

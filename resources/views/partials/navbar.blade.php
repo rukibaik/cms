@@ -1,14 +1,14 @@
-<nav class="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-brand-darker/95 lg:bg-brand-darker/80 lg:backdrop-blur-md">
+<nav class="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-brand-darker/95 lg:bg-brand-darker/85 lg:backdrop-blur-sm" aria-label="Primary navigation">
     <input type="checkbox" id="mobile-menu-toggle" class="sr-only" aria-label="Toggle navigation">
 
-    <div class="nav-shell mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="nav-shell mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between lg:h-20">
-            <a href="{{ route('home') }}#home" class="group flex min-h-11 items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker">
+            <a href="{{ route('home') }}#home" class="group flex min-h-11 items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker">
                 <span
                     class="flex h-9 w-9 items-center justify-center rounded-md bg-brand-accent text-sm font-black text-white transition-colors duration-150 group-hover:bg-brand-accent-light group-hover:text-brand-dark">
                     P
                 </span>
-                <span class="hidden text-sm font-bold uppercase tracking-wider text-white sm:block">
+                <span class="hidden text-sm font-bold uppercase tracking-wide text-white sm:block">
                     Prestige <span class="text-brand-accent">In Media</span>
                 </span>
             </a>
@@ -29,19 +29,20 @@
 
             <label
                 for="mobile-menu-toggle"
-                class="mobile-menu-button flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 lg:hidden"
+                class="mobile-menu-button flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-md border border-white/10 bg-white/5 lg:hidden"
                 role="button"
                 aria-controls="mobile-menu-panel"
             >
-                <span class="block h-0.5 w-5 bg-white"></span>
-                <span class="block h-0.5 w-5 bg-white"></span>
-                <span class="block h-0.5 w-5 bg-white"></span>
+                <span class="block h-0.5 w-5 bg-white" aria-hidden="true"></span>
+                <span class="block h-0.5 w-5 bg-white" aria-hidden="true"></span>
+                <span class="block h-0.5 w-5 bg-white" aria-hidden="true"></span>
+                <span class="sr-only">Open menu</span>
             </label>
         </div>
     </div>
 
-    <div id="mobile-menu-panel" class="mobile-menu-panel border-t border-white/10 bg-brand-darker lg:hidden">
-        <div class="flex flex-col gap-1 px-6 py-5">
+    <div id="mobile-menu-panel" class="mobile-menu-panel max-h-[calc(100svh-4rem)] overflow-y-auto border-t border-white/10 bg-brand-darker lg:hidden">
+        <div class="flex flex-col gap-1 px-5 py-5 sm:px-6">
             <a href="{{ route('home') }}#home" class="mobile-nav-link mobile-nav-link-active">Home</a>
             <a href="{{ route('home') }}#about" class="mobile-nav-link">About</a>
             <a href="{{ route('home') }}#services" class="mobile-nav-link">Services</a>

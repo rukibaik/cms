@@ -1,8 +1,8 @@
 <footer class="relative border-t border-white/10 bg-brand-darker">
-    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
-                <h2 class="mb-8 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+                <h2 class="mb-8 text-3xl font-bold leading-tight tracking-tight text-white text-balance sm:text-4xl lg:text-5xl">
                     Siap Mulai
                     <br>
                     <span class="text-brand-accent">Proyek?</span>
@@ -51,7 +51,7 @@
             <p class="text-xs text-white/35">
                 Copyright 2026 PT. INTERNASIONAL MEDIA CORP
             </p>
-            <a href="{{ route('home') }}#home" class="text-xs font-medium text-white/35 transition-colors duration-150 hover:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+            <a href="{{ route('home') }}#home" class="rounded-md text-xs font-medium text-white/35 transition-colors duration-150 hover:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker">
                 Back to top
             </a>
         </div>

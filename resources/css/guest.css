@@ -1,37 +1,5 @@
 @import 'tailwindcss';
 
-@font-face {
-    font-family: 'Open Sauce Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-display: optional;
-    src: url('/fonts/OpenSauceSans-Regular.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Open Sauce Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-display: optional;
-    src: url('/fonts/OpenSauceSans-Medium.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Open Sauce Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-display: optional;
-    src: url('/fonts/OpenSauceSans-SemiBold.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Open Sauce Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-display: optional;
-    src: url('/fonts/OpenSauceSans-Bold.woff') format('woff');
-}
-
 @source '../views/layouts/guest.blade.php';
 @source '../views/pages/*.blade.php';
 @source '../views/partials/navbar.blade.php';
@@ -39,8 +7,8 @@
 @source '../views/sections/*.blade.php';
 
 @theme {
-    --font-sans: 'Open Sauce Sans', ui-sans-serif, system-ui, sans-serif;
-    --font-serif: 'Open Sauce Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     --color-brand-dark: #0a0a0a;
     --color-brand-darker: #050505;
@@ -61,11 +29,38 @@
 
 @layer base {
     html {
+        background-color: var(--color-brand-darker);
         scroll-padding-top: 5rem;
+        scrollbar-gutter: stable;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
     }
 
     body {
+        min-height: 100svh;
+        overflow-x: hidden;
         text-rendering: optimizeLegibility;
+    }
+
+    img,
+    svg,
+    video,
+    canvas {
+        display: block;
+        max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    a,
+    button {
+        overflow-wrap: break-word;
+    }
+
+    :target {
+        scroll-margin-top: 5rem;
     }
 
     a,
@@ -78,8 +73,16 @@
 }
 
 @layer components {
+    .skip-link {
+        @apply sr-only fixed left-4 top-4 z-[60] rounded-md bg-white px-4 py-3 text-sm font-semibold text-brand-dark shadow-lg focus:not-sr-only;
+    }
+
     .btn {
-        @apply inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold leading-tight transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker disabled:pointer-events-none disabled:opacity-50 sm:w-auto;
+        @apply inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md px-5 py-3 text-center text-sm font-semibold leading-tight transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker disabled:pointer-events-none disabled:opacity-50 sm:w-auto;
+    }
+
+    .btn svg {
+        @apply h-4 w-4 shrink-0;
     }
 
     .btn-primary {
@@ -107,11 +110,11 @@
     }
 
     .nav-link {
-        @apply inline-flex min-h-11 items-center rounded-full px-4 text-sm font-medium text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker;
+        @apply inline-flex min-h-11 items-center rounded-md px-4 text-sm font-medium text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker;
     }
 
     .mobile-nav-link {
-        @apply flex min-h-12 items-center rounded-lg px-4 text-sm font-semibold text-white/75 transition-colors duration-150 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent;
+        @apply flex min-h-12 items-center rounded-md px-4 text-sm font-semibold text-white/75 transition-colors duration-150 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent;
     }
 
     .mobile-nav-link-active {
@@ -123,7 +126,7 @@
     }
 
     .social-icon {
-        @apply flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition-colors duration-150;
+        @apply flex h-9 w-9 items-center justify-center rounded-md border border-white/20 transition-colors duration-150;
     }
 
     .social-link:hover .social-icon,
