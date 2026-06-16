@@ -139,7 +139,7 @@
             <a href="{{ route('cms.services') }}"
                 class="px-4 py-2 border border-white/10 text-white/70 rounded-md hover:bg-white/5 transition">Cancel</a>
             <button wire:click="save" wire:loading.attr="disabled"
-                class="bg-brand-accent hover:bg-brand-accent-light text-brand-dark px-6 py-2 rounded-md font-medium disabled:opacity-50 transition flex items-center gap-2">
+                class="bg-brand-accent hover:bg-brand-accent-light text-white px-6 py-2 rounded-md font-medium disabled:opacity-50 transition flex items-center gap-2">
                 <span wire:loading.remove>Save</span>
                 <span wire:loading>Saving...</span>
             </button>

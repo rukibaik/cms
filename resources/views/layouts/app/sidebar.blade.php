@@ -15,7 +15,7 @@
 
         <flux:sidebar.nav>
             <flux:sidebar.group :heading="__('Platform')" class="grid">
-                <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
+                <flux:sidebar.item icon="squares-2x2" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
                     wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:sidebar.item>
@@ -23,16 +23,16 @@
                     wire:navigate>
                     {{ __('Hero') }}
                 </flux:sidebar.item>
-                <flux:sidebar.item icon="home" :href="route('cms.about')" :current="request()->routeIs('cms.about')"
+                <flux:sidebar.item icon="information-circle" :href="route('cms.about')" :current="request()->routeIs('cms.about')"
                     wire:navigate>
                     {{ __('About Us') }}
                 </flux:sidebar.item>
-                <flux:sidebar.item icon="home" :href="route('cms.services')"
+                <flux:sidebar.item icon="queue-list" :href="route('cms.services')"
                     :current="request()->routeIs('cms.services*')" wire:navigate>
                     {{ __('Services') }}
                 </flux:sidebar.item>
 
-                <flux:sidebar.item icon="home" :href="route('cms.pricing')"
+                <flux:sidebar.item icon="currency-dollar" :href="route('cms.pricing')"
                     :current="request()->routeIs('cms.pricing')" wire:navigate>
                     {{ __('Pricing') }}
                 </flux:sidebar.item>

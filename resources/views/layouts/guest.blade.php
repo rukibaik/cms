@@ -12,9 +12,9 @@
         content="{{ $metaDescription ?? 'Prestige In Media membantu brand membangun konten visual, strategi kreatif, dan media digital yang modern.' }}"
     >
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/logo.webp" sizes="any">
+    <link rel="icon" href="/logo.webp" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-logo.webp">
 
     @stack('head')
 

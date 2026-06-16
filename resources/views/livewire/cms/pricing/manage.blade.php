@@ -82,10 +82,10 @@
     @endforeach
 
     <div class="flex justify-between items-center pt-4 border-t">
-        <button wire:click="addPricing" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded">+ Add
+        <button wire:click="addPricing" class="bg-gray-200 hover:bg-gray-300 text-brand-accent px-4 py-2 rounded">+ Add
             Plan</button>
         <button wire:click="save" wire:loading.attr="disabled"
-            class="bg-brand-accent hover:bg-brand-accent-light text-brand-dark px-6 py-2 rounded disabled:opacity-50 font-medium">
+            class="bg-brand-accent hover:bg-brand-accent-light text-white px-6 py-2 rounded disabled:opacity-50 font-medium">
             <span wire:loading.remove>Save All</span>
             <span wire:loading>Saving...</span>
         </button>

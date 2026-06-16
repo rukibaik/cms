@@ -7,7 +7,7 @@
             Strategi Kreatif untuk
             <br class="hidden sm:block">
             Brand yang Ingin
-            <span class="font-normal italic text-white/90">Naik Level</span>
+            <span class=" text-white/90">Naik Level</span>
         </h2>
         <p class="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/90 text-pretty lg:mb-12 lg:text-lg">
             Konsultasikan kebutuhan media kreatif Anda bersama tim ahli kami - gratis, tanpa komitmen.

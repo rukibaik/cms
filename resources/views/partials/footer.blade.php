@@ -1,11 +1,11 @@
-<footer class="relative border-t border-white/10 bg-brand-darker">
+<footer class="relative border-t border-[#1a1a1a] bg-gradient-to-b from-black via-[#111827] to-blue-600/50">
     <div class="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
-                <h2 class="mb-8 text-3xl font-bold leading-tight tracking-tight text-white text-balance sm:text-4xl lg:text-5xl">
+                <h2 class="mb-8 text-9xl font-bold leading-tight tracking-tight text-white text-balance sm:text-4xl lg:text-7xl">
                     Siap Mulai
                     <br>
-                    <span class="text-brand-accent">Proyek?</span>
+                    <span class="font-bold italic text-brand-accent">Proyek?</span>
                 </h2>
                 <a href="{{ route('home') }}#contact" class="btn btn-light">
                     Mari Diskusi

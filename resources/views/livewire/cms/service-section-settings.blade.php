@@ -44,7 +44,7 @@
 
     <div class="flex justify-end">
         <button wire:click="save" wire:loading.attr="disabled"
-            class="rounded-md bg-brand-accent px-6 py-2 font-medium text-brand-dark transition hover:bg-brand-accent-light disabled:opacity-50">
+            class="rounded-md bg-brand-accent px-6 py-2 font-medium text-white transition hover:bg-brand-accent-light disabled:opacity-50">
             <span wire:loading.remove>Save Settings</span>
             <span wire:loading>Saving...</span>
         </button>

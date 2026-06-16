@@ -26,8 +26,8 @@ class ContactSection extends Model
     {
         return [
             'eyebrow' => 'Contact',
-            'title' => 'Let us build your next campaign',
-            'subtitle' => 'Tell us what you need and our team will follow up via WhatsApp.',
+            'title' => 'Let Us Build Your Next Campaign.',
+            'subtitle' => 'Sampaikan kebutuhan Anda dan tim,kami akan menindaklanjuti melalui WhatsApp.',
             'whatsapp_number' => '6281234567890',
             'email' => 'hello@prestigeinmedia.com',
             'phone' => '+62 812 3456 7890',

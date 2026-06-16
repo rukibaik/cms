@@ -1,25 +1,21 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
-
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
     /* Fonts */
     --font-sans: 'Inter', system-ui, sans-serif;
     --font-serif: 'Playfair Display', serif;
-
     /* Brand Colors */
     --color-brand-dark: #0a0a0a;
     --color-brand-darker: #050505;
     --color-brand-accent: #0D45FF;
     --color-brand-accent-light: #e8c97a;
     --color-brand-accent-dark: #b8923e;
-
     --color-brand-gray-100: #f5f5f5;
     --color-brand-gray-200: #e5e5e5;
     --color-brand-gray-300: #d4d4d4;
@@ -29,11 +25,9 @@
     --color-brand-gray-700: #404040;
     --color-brand-gray-800: #262626;
     --color-brand-gray-900: #171717;
-
     /* Animations */
     --animate-fade-in: fadeIn 0.5s ease-out forwards;
     --animate-slide-up: slideUp 0.6s ease-out forwards;
-
     /* Existing Theme Variables (Preserved) */
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
@@ -46,21 +40,34 @@
     --color-zinc-800: #262626;
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
-
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
 }
 
+
 /* Animation Keyframes */
+
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes slideUp {
-    0% { transform: translateY(20px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @layer theme {
@@ -72,6 +79,7 @@
 }
 
 @layer base {
+
     *,
     ::after,
     ::before,
@@ -94,6 +102,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
         *,
         ::before,
         ::after {

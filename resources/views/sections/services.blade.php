@@ -1,13 +1,13 @@
 <section
-    class="content-visibility-auto relative overflow-hidden bg-brand-darker py-20 lg:py-28"
+    class="content-visibility-auto relative overflow-hidden bg-radial from-blue-900 via-slate-950 to-black bg-right-bottom py-20 lg:py-28"
     id="services"
 >
     <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-6 border-b border-white/10 pb-12 lg:flex-row lg:items-end lg:justify-between">
             <div class="max-w-2xl">
                 <div class="flex items-center gap-3">
-                    <span class="h-px w-12 bg-brand-accent"></span>
-                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-accent">Services</p>
+                    <span class="h-px w-12 bg-white"></span>
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white">Services</p>
                 </div>
                 <h2 class="mt-4 font-serif text-3xl font-bold tracking-tight text-white text-balance sm:text-4xl lg:text-5xl">
                     {{ $serviceSection?->title ?: 'Services' }}
@@ -19,7 +19,7 @@
 
             @if ($serviceSection?->button_text)
                 <a
-                    class="btn btn-outline"
+                    class="btn btn-accent "
                     href="{{ $serviceSection->button_link ?: route('home') . '#contact' }}"
                 >
                     {{ $serviceSection->button_text }}
@@ -42,7 +42,7 @@
                         <div class="flex min-h-56 flex-1 flex-col bg-white/5 p-6">
                             <div class="flex items-start justify-between gap-3">
                                 <span
-                                    class="inline-flex rounded-md bg-brand-accent/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand-accent"
+                                    class="inline-flex rounded-md bg-brand-accent/30 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-White"
                                 >
                                     Service
                                 </span>

@@ -4,9 +4,16 @@
     <div class="nav-shell mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between lg:h-20">
             <a href="{{ route('home') }}#home" class="group flex min-h-11 items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-darker">
-                <span
-                    class="flex h-9 w-9 items-center justify-center rounded-md bg-brand-accent text-sm font-black text-white transition-colors duration-150 group-hover:bg-brand-accent-light group-hover:text-brand-dark">
-                    P
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5">
+                    <img
+                        src="{{ asset('logo.webp') }}"
+                        alt="Prestige In Media logo"
+                        class="h-full w-full object-cover"
+                        width="40"
+                        height="40"
+                        loading="eager"
+                        decoding="async"
+                    >
                 </span>
                 <span class="hidden text-sm font-bold uppercase tracking-wide text-white sm:block">
                     Prestige <span class="text-brand-accent">In Media</span>
@@ -23,7 +30,7 @@
 
             <div class="hidden items-center gap-4 lg:flex">
                 <a href="{{ route('home') }}#contact" class="btn btn-primary min-h-10 px-5 py-2.5">
-                    Get Started
+                    Konsultasi Sekarang
                 </a>
             </div>
 

@@ -32,7 +32,7 @@
 
         <div class="flex justify-end pt-2">
             <button wire:click="save" wire:loading.attr="disabled"
-                class="bg-brand-accent hover:bg-brand-accent-light text-brand-dark px-6 py-2 rounded-md font-medium disabled:opacity-50 transition flex items-center gap-2">
+                class="bg-brand-accent hover:bg-brand-accent-light text-White px-6 py-2 rounded-md font-medium disabled:opacity-50 transition flex items-center gap-2">
                 <span wire:loading.remove>Save Changes</span>
                 <span wire:loading>
                     <svg class="animate-spin h-4 w-4 text-brand-dark" xmlns="http://www.w3.org/2000/svg" fill="none"

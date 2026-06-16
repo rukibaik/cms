@@ -6,7 +6,7 @@
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-white">Manage Services</h2>
         <a href="{{ route('cms.services.create') }}"
-            class="bg-brand-accent hover:bg-brand-accent-light text-brand-dark px-4 py-2 rounded-md font-medium transition">
+            class="bg-brand-accent hover:bg-brand-accent-light text-white px-4 py-2 rounded-md font-medium transition">
             + Add Service
         </a>
     </div>

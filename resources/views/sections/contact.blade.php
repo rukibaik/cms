@@ -3,7 +3,7 @@
     $contactFormId = 'contact-form-' . spl_object_id($contact);
 @endphp
 
-<section id="contact" class="content-visibility-auto relative overflow-hidden bg-brand-darker py-20 lg:py-28">
+<section id="contact" class="content-visibility-auto relative overflow-hidden bg-black py-20 lg:py-28">
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
     </div>
@@ -11,7 +11,7 @@
     <div class="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
         <div class="flex flex-col justify-center">
             @if ($contact->eyebrow)
-                <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
+                <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white">
                     {{ $contact->eyebrow }}
                 </p>
             @endif
@@ -29,7 +29,7 @@
             <div class="mt-10 grid gap-4 text-sm text-white/60">
                 @if ($contact->email)
                     <a href="mailto:{{ $contact->email }}" class="group flex min-h-11 items-center gap-3 rounded-md transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
-                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 text-brand-accent transition-colors duration-150 group-hover:border-brand-accent/50">
+                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 text-white transition-colors duration-150 group-hover:border-brand-accent/50">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0-9.75 6-9.75-6" />
                             </svg>
@@ -40,7 +40,7 @@
 
                 @if ($contact->phone)
                     <a href="tel:{{ preg_replace('/[^0-9+]/', '', $contact->phone) }}" class="group flex min-h-11 items-center gap-3 rounded-md transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
-                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 text-brand-accent transition-colors duration-150 group-hover:border-brand-accent/50">
+                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 text-white transition-colors duration-150 group-hover:border-brand-accent/50">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102A1.125 1.125 0 0 0 5.872 2.25H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                             </svg>
@@ -51,7 +51,7 @@
 
                 @if ($contact->address)
                     <p class="flex min-h-11 items-center gap-3">
-                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 text-brand-accent">
+                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 text-white">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
@@ -130,7 +130,7 @@
 
                 event.preventDefault();
 
-                const number = form.dataset.whatsappNumber;
+                const number = 08117009600;
 
                 if (!number) {
                     return;
